@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "mlops-sufficiency"
+version = "0.1.0"
+description = "Biblioteca MLOps para avaliação de suficiência de treinamento de modelos de detecção de objetos"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+  { name = "Yago de Jesus Martins" }
+]
+keywords = ["mlops", "machine-learning", "object-detection", "data-drift", "yolo"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = []  # zero dependências externas
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "build", "twine"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["mlops_sufficiency*"]

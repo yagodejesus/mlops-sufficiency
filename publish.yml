@@ -1,0 +1,29 @@
+name: Publicar no PyPI
+
+on:
+  push:
+    tags:
+      - "v*"   # dispara em v0.1.0, v1.2.3, etc.
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar ferramentas
+        run: pip install build twine
+
+      - name: Build do pacote
+        run: python -m build
+
+      - name: Publicar no PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: twine upload dist/*
